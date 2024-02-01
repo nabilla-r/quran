@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quran/global.dart';
 import 'package:quran/ui/home_screen.dart';
@@ -31,8 +31,13 @@ class SplashScreen extends StatelessWidget {
                   color: secondary,
                   fontSize: 18,
                 ),
+                textAlign: TextAlign.center,
               ),
+                const SizedBox(
+                  height: 50,
+                ),
                 Stack(
+                  clipBehavior: Clip.none,
                   children: [
                     Container(
                     height: 450,
@@ -41,11 +46,11 @@ class SplashScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                       color: primary,
                     ),
-                    child: SvgPicture.asset('assets/svg/splash.svg'),
+                    child: SvgPicture.asset('/svg/images/splash.svg'),
                   ),
                     Positioned(
                       left: 0,
-                      bottom: 0,
+                      bottom: -30,
                       right: 0,
                        child: Center(
                         child: GestureDetector(
@@ -56,8 +61,8 @@ class SplashScreen extends StatelessWidget {
                           },
                           child: Container(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 50,
-                              vertical: 50,
+                              horizontal: 40,
+                              vertical: 15,
                             ),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
