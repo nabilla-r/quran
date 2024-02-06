@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:quran/global.dart';
+import 'package:quran/ui/tabs/hijb_tab.dart';
+import 'package:quran/ui/tabs/page_tab.dart';
+import 'package:quran/ui/tabs/para_tab.dart';
+import 'package:quran/ui/tabs/surah_tab.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -23,15 +27,66 @@ class HomeScreen extends StatelessWidget {
                     ),
                     SliverAppBar(
                       automaticallyImplyLeading: false,
-                      backgroundColor: primary,
-                    )
+                      elevation: 0,
+                      pinned: true,
+                      shape: Border(
+                        bottom: BorderSide(
+                          width: 3,
+                          color: primary.withOpacity(.1),
+                        )
+                      ),
+                      bottom: PreferredSize(
+                        preferredSize: const Size.fromHeight(0),
+                        child: _tab()
+                      )
+                    ),
                   ],
-                  body: Container()
+                  body: const TabBarView(
+                    children: [
+                      SurahTab(),
+                      ParaTab(),
+                      PageTab(),
+                      HijbTab()
+                  ],
+                  )
               ),
           ),
       ),
     );
   }
+
+  TabBar _tab() {
+    return TabBar( tabs: [
+     _tabItem(label: 'Surah'),
+     _tabItem(label: 'Para'),
+     _tabItem(label: 'Page'),
+     _tabItem(label: 'Hijb'),
+    ],
+      indicator: UnderlineTabIndicator(
+        borderSide:
+          BorderSide(
+            width: 5,
+            color: primary
+          ),
+        insets: const
+            EdgeInsets.symmetric(horizontal: 70)
+      ),
+    );
+  }
+
+  Tab _tabItem({required String label}) {
+    return Tab(
+      child: Text(
+        label,
+        style: GoogleFonts.poppins(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+    );
+  }
+
+
 
   Column _salam() {
     return Column(
