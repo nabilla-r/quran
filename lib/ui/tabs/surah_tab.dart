@@ -37,7 +37,7 @@ class SurahTab extends StatelessWidget {
 
   Widget _surahItem({required BuildContext context, required Surah surah}) => GestureDetector(
     onTap: () {
-      Navigator.of(context).push(MaterialPageRoute(builder: (context) => DetailScreen()));
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => DetailScreen(surahNumber: surah.nomor,)));
     },
     child: Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
